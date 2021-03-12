@@ -1,27 +1,34 @@
 const http = require('http');
+const Aluno = require('./models/aluno');
+
 const hostname = '127.0.0.1';
 const port = 3000;
 
-const mat = require('./examples/mat');
-const op = require('./examples/operacaoArray');
+
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
- 
-  var msg = "Itens iniciais:";
   
-  items = [10, 20, 30, 40, 50];
+  listaAlunos = "";
 
-  items = op.operacaoArray(items, mat.sub, 5);
+  
+  let alunos = Aluno.getAll();
 
-  for (let index = 0; index < items.length; index++) {
-    msg = msg + ' ' + items[index]
-  }
+  alunos.forEach(function(aluno){
+    listaAlunos = listaAlunos + 
+    "Matricula: " + aluno.matricula +"\n"+
+    "Primeiro Nome: " + aluno.primeiro_nome + "\n" +
+    "Sobrenome: " + aluno.sobrenome +"\n"+
+    "Email: " + aluno.email +"\n"+
+    "Idade: " + aluno.idade +"\n\n\n"; 
+  });
+  
 
-  op.operacaoArray(items, mat.sub, 10);
-
-  res.end(msg);
+ /* let aluno = Aluno.getAluno('3556520586813973');
+  console.log(aluno);
+ */ 
+  res.end(listaAlunos);
 
 
 

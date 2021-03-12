@@ -2,10 +2,12 @@
 // Exemplo JEST com múltiplos casos de teste a partir de arquivo JSON
 
 const mat = require('./mat');
+
 const fs = require('fs');
 
+const path = require("path");
 
-var casosDeTeste = JSON.parse(fs.readFileSync('casosDeTesteMult.json', 'utf8'));
+var casosDeTeste = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../examples/casosDeTesteMult.json")));
 
 //"algoritmo"
 //var resultadoEsperado = casoTeste.entrada1/casoTeste.entrada2;
