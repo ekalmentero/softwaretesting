@@ -1,9 +1,9 @@
 {
     "scripts": {
-      "test": "jest"
+        "test": "jest"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "mysql": "^2.18.1"
     }
-
-    
-    
-    
 }

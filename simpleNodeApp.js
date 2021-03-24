@@ -1,39 +1,85 @@
 const http = require('http');
-const Aluno = require('./models/aluno');
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
+const express = require('express')
+const app = express()
 
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  
-  listaAlunos = "";
+const controllerAluno = require('./controllers/alunoController');
 
-  
-  let alunos = Aluno.getAll();
 
-  alunos.forEach(function(aluno){
-    listaAlunos = listaAlunos + 
-    "Matricula: " + aluno.matricula +"\n"+
-    "Primeiro Nome: " + aluno.primeiro_nome + "\n" +
-    "Sobrenome: " + aluno.sobrenome +"\n"+
-    "Email: " + aluno.email +"\n"+
-    "Idade: " + aluno.idade +"\n\n\n"; 
+app.put('/', function (req, res) {
+
+//exemplo de comportamento assíncrono
+
+  console.log("POSIÇÃO 0");
+
+  new Promise((resolve, reject) => {
+
+    console.log("POSIÇÃO 1");
+    resolve();
+
+  }).then(() => {
+
+   //assíncrono
+    // comportamento que depende do comportamento da promise
+
   });
-  
 
- /* let aluno = Aluno.getAluno('3556520586813973');
-  console.log(aluno);
- */ 
-  res.end(listaAlunos);
+  console.log("POSIÇÃO 3")
+  console.log("POSIÇÃO 4")
+  console.log("POSIÇÃO 5")
+  console.log("POSIÇÃO 6")
 
-
+  res.send('Resposta a requisição PUT');
 
 });
 
-server.listen(port, hostname, () => {
+//Rotas de aluno. Pode ser colocado em um arquivo a parte (alunoRoutes.js)
+
+app.get('/aluno/:id', function (req, res) {
+    
+  let matricula = req.params.id;
+  console.log("recebida requisição get para aluno com matrícula: "+matricula);
+
+  let matriculaAlunoSelecionado = "";
+
+  controllerAluno.getAluno(matricula)
+    .then(resultado => {
+        res.send(JSON.stringify(resultado))
+      })
+    .catch(erro => {
+      console.log("Promise rejeitada: " + erro);
+      res.send(erro);
+    })
+  
+
+});
+
+
+app.get('/aluno/', function (req, res) {
+  
+  console.log("recebida requisição get todos alunos ");
+  controllerAluno.getTodosAlunos()
+  .then(resultado => {
+    res.send(resultado)
+    })
+  .catch(erro => {
+    console.log("Promise rejeitada (aluno): " + erro);
+    res.send(erro);
+  })
+  
+
+});
+
+
+app.post('/', function (req, res) {
+  res.send('Got a POST request');
+});
+
+
+app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
