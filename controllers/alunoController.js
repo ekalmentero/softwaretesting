@@ -25,13 +25,74 @@ function getAluno(matricula){
     return promise;
 }
 
-function getCR (matricula){
-    // todo
+function getCR(matricula) {
+    const promise = new Promise ( (resolve, reject) => {
+        modelAluno.getAvaliacoesByAluno(matricula).then( avaliacoes => {
+            if (typeof avaliacoes  !== 'undefined' && avaliacoes) {
+                let total = 0;
+                let dividendo = 0;
+                avaliacoes.forEach((avaliacao) => {
+                    total += (avaliacao.nota*avaliacao.peso);
+                    dividendo += avaliacao.peso;
+                });
+                let cr = { cr: total / dividendo };
+                resolve(cr);
+            } 
+            else { 
+                reject(new Error("Nenhum aluno encontrado"));
+            } 
+        });
+    });
 
-    //recuperar notas do aluno
-
-    //lógica de cálculo do CR
+    return promise;
 }
+
+function getSituacao(matricula, codigo) {
+    const promise = new Promise ( (resolve, reject) => {
+        modelAluno.getSituacao(matricula, codigo).then( avaliacoes => {
+            if (typeof avaliacoes  !== 'undefined' && avaliacoes) {
+                let total = 0;
+                let dividendo = 0;
+                avaliacoes.forEach((avaliacao) => {
+                    total += (avaliacao.nota*avaliacao.peso);
+                    dividendo += avaliacao.peso;
+                });
+                let media = total / dividendo;
+                let situacao = { situacao: (media >= 5) ? ('Aprovado') : ('Reprovado'), media: media };
+                resolve(situacao);
+            } 
+            else { 
+                reject(new Error("Nenhum aluno encontrado"));
+            } 
+        });
+    });
+
+    return promise;
+}
+
+function getCRPeriodo(matricula, ano, semestre) {
+    const promise = new Promise ( (resolve, reject) => {
+        modelAluno.getAvaliacoesByAlunoByPeriodo(matricula, ano, semestre).then( avaliacoes => {
+            if (typeof avaliacoes  !== 'undefined' && avaliacoes) {
+                let total = 0;
+                let dividendo = 0;
+                avaliacoes.forEach((avaliacao) => {
+                    total += (avaliacao.nota*avaliacao.peso);
+                    dividendo += avaliacao.peso;
+                });
+                let cr = { cr: total / dividendo };
+                resolve(cr);
+            } 
+            else { 
+                reject(new Error("Aluno ou período não encontrado"));
+            } 
+        });
+    });
+
+    return promise;
+}
+
+
 
 function getTodosAlunos(){
     
@@ -99,7 +160,8 @@ module.exports = {
     getTodosAlunos,
     createAluno,
     deleteAluno,
-    updateAluno
-   
-    
+    updateAluno,
+    getCR,
+    getCRPeriodo,
+    getSituacao
 }
