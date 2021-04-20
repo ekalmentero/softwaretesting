@@ -1,10 +1,10 @@
 //mocked test
 
-const aluno = require('../models/aluno.js');
+const alunoModel = require('../models/alunoModel.js');
 
-jest.mock('../models/aluno.js');
+jest.mock('../models/alunoModel.js');
 
 test('se foi utilizado o mock para teste', () => {
-    expect(aluno.getAluno(715752)).toEqual({matricula: 715752, nome: 'Abba'});
+    expect(alunoModel.getAlunoBD(715752)).toEqual({matricula: 715752, nome: 'Abba'});
 });
 

@@ -18,6 +18,7 @@ test('get aluno', () => {
 */
 
 // teste assíncrono - teste de integração, exercitando a arquitetura do software
+jest.mock('../models/alunoModel.js');
 
 test('get aluno (assíncrono)', () => {
     return AlunoController.getAluno(701677).then(data => {

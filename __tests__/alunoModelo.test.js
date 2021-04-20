@@ -1,5 +1,5 @@
 
-const Aluno = require('../models/aluno');
+//const Aluno = require('../models/alunoModel');
 
 
 /*afterAll( done => {
