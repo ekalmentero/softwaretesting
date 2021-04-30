@@ -1,4 +1,7 @@
-{
+{   
+    "jest": {
+        "reporters": ["default", "<rootDir>/custom-jest-reporter.js"]
+    },
     "scripts": {
         "test": "jest"
     },

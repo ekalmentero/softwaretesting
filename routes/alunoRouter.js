@@ -24,6 +24,54 @@ aluno.get('/aluno/:id', function (req, res) {
     
   
   });
+
+aluno.get('/aluno/cr/:id', function(req, res) {
+  let matricula = req.params.id;
+  
+  console.log("recebida requisição get para CR de aluno com matrícula: "+matricula);
+
+  controllerAluno.getCR(matricula)
+      .then(resultado => {
+            res.send(resultado)
+        })
+      .catch(erro => {
+        console.log("Promise rejeitada: " + erro);
+        res.send(erro);
+      })
+});
+
+aluno.get('/aluno/cr/:id/:ano/:semestre', function(req, res) {
+  let matricula = req.params.id;
+  let ano = req.params.ano;
+  let semestre = req.params.semestre;
+  
+  console.log("recebida requisição get para CR (" + ano + "." + semestre + ") de aluno com matrícula: "+matricula);
+
+  controllerAluno.getCRPeriodo(matricula, ano, semestre)
+      .then(resultado => {
+            res.send(resultado)
+        })
+      .catch(erro => {
+        console.log("Promise rejeitada: " + erro);
+        res.send(erro);
+      })
+});
+
+aluno.get('/aluno/situacao/:id/:codigo', function(req, res) {
+  let matricula = req.params.id;
+  let codigo = req.params.codigo;
+  
+  console.log("recebida requisição get para situação (turma de código " + codigo + ") de aluno com matrícula: "+matricula);
+
+  controllerAluno.getSituacao(matricula, codigo)
+      .then(resultado => {
+            res.send(resultado)
+        })
+      .catch(erro => {
+        console.log("Promise rejeitada: " + erro);
+        res.send(erro);
+      })
+});
   
   aluno
     .get('/aluno/', function (req, res) {
@@ -52,8 +100,8 @@ aluno.get('/aluno/:id', function (req, res) {
     })
 
     .delete('/aluno', function (req, res) {
-      console.log("recebida requisição delete aluno :ID="+req.body.id);
-      controllerAluno.deleteAluno(req.body.id)
+      console.log("recebida requisição delete aluno :ID="+req.body.matricula);
+      controllerAluno.deleteAluno(req.body.matricula)
       .then(resultado => {
         res.send("Aluno removido com sucesso")
       })
