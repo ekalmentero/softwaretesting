@@ -1,0 +1,147 @@
+[
+  {
+    "arr": [8, 4, 5, 7],
+    "arr2": [3, 2, 1, 8],
+    "result": [8, 4, 5, 7, 3, 2, 1]
+  },
+  {
+    "arr": [1, 2, 3, 4],
+    "arr2": [4, 5, 6, 7],
+    "result": [1, 2, 3, 4, 5, 6, 7]
+  },
+  {
+    "arr": [1, 2, 3, 5],
+    "arr2": [4, 5, 6, 7],
+    "result": [1, 2, 3, 5, 4, 6, 7]
+  },
+  {
+    "arr": [10, 20, 30, 50],
+    "arr2": [40, 50, 60, 70],
+    "result": [10, 20, 30, 50, 40, 60, 70]
+  },
+  {
+    "arr": [5, 3, 2, 1],
+    "arr2": [2, 5, 9, 7],
+    "result": [5, 3, 2, 1, 9, 7]
+  },
+  {
+    "arr": [1, 2, 3, 15],
+    "arr2": [4, 5, 6, 1],
+    "result": [1, 2, 3, 15, 4, 5, 6]
+  },
+  {
+    "arr": [1, 2, 3, 15],
+    "arr2": [4, 5, 6, 1],
+    "result": [1, 2, 3, 15, 4, 5, 6]
+  },
+  {
+    "arr": 10,
+    "arr2": [1, 5, 9],
+    "result": [1, 5, 9]
+  },
+  {
+    "arr": [9, 20, 1],
+    "arr2": 5,
+    "result": [9, 20, 1]
+  },
+  {
+    "arr": 20,
+    "arr2": 10,
+    "result": []
+  },
+  {
+    "arr": "teste de software",
+    "arr2": 5,
+    "result": []
+  },
+  {
+    "arr": 9,
+    "arr2": "",
+    "result": []
+  },
+  {
+    "arr": [1, 9, 3, "a"],
+    "arr2": [3, "a", "b", 6],
+    "result": [1, 9, 3, "a", "b", 6]
+  },
+  {
+    "arr": [5, "d", 1, "c"],
+    "result": [5, "d", 1, "c"]
+  },
+  {
+    "arr2": [10, "teste", 1, 4],
+    "result": [10, "teste", 1, 4]
+  },
+  {
+    "arr2": ["aa", "teste", "eeee", "aaaa", "aa"],
+    "result": ["aa", "teste", "eeee", "aaaa"]
+  },
+  {
+    "result": []
+  },
+  {
+    "arr": "array 1",
+    "arr2": "array 2",
+    "result": []
+  },
+  {
+    "arr": [1, 2, 3, 4, 1, 2],
+    "arr2": [6, 7, 3, 2],
+    "result": [1, 2, 3, 4, 6, 7]
+  },
+  {
+    "arr": ["teste", 5],
+    "arr2": ["teste", 5],
+    "result": ["teste", 5]
+  },
+  {
+    "arr": ["teste1", "teste2", "teste3"],
+    "arr2": ["teste3", "teste4"],
+    "result": ["teste1", "teste2", "teste3", "teste4"]
+  },
+  {
+    "arr": [3, 3, 3],
+    "arr2": [3, 3, 3],
+    "result": [3]
+  },
+  {
+    "arr": ["teste", "teste", "teste", "teste", "teste"],
+    "arr2": ["teste", "teste", "teste", 2],
+    "result": ["teste", 2]
+  },
+  {
+    "arr": [null, null],
+    "arr2": [null, 5, 7],
+    "result": [null, 5, 7]
+  },
+  {
+    "arr": [1, 8, 9007199254740991],
+    "arr2": [-9007199254740991, 1, 0],
+    "result": [1, 8, 9007199254740991, -9007199254740991, 0]
+  },
+  {
+    "arr": [0, null, false],
+    "arr2": [1, "1"],
+    "result": [0, null, false, 1, "1"]
+  },
+  {
+    "arr": ["tópicos", "em", "SI"],
+    "arr2": [1],
+    "result": ["tópicos", "em", "SI", 1]
+  },
+  {
+    "arr": [30, 20, 10, 0, -10, -20],
+    "arr2": [25, 15, 5, -5, 0],
+    "result": [30, 20, 10, 0, -10, -20, 25, 15, 5, -5]
+  },
+  {
+    "arr": [],
+    "arr2": null,
+    "result": []
+  },
+  {
+    "arr": null,
+    "arr2": false,
+    "result": []
+  }
+]

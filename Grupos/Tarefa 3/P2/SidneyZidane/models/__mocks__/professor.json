@@ -1,0 +1,17 @@
+[
+  {
+    "professor_ID": 1,
+    "matricula": 222222,
+    "nome": "Luciano"
+  },
+  {
+    "professor_ID": 2,
+    "matricula": 212121,
+    "nome": "Juliana"
+  },
+  {
+    "professor_ID": 3,
+    "matricula": 202020,
+    "nome": "Kinder"
+  }
+]

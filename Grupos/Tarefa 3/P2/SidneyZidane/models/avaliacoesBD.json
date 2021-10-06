@@ -1,0 +1,37 @@
+[
+  {
+    "avaliacao_ID": 1,
+    "turma_ID": 1,
+    "aluno_ID": 1,
+    "nota": 10,
+    "peso": 1
+  },
+  {
+    "avaliacao_ID": 3,
+    "turma_ID": 1,
+    "aluno_ID": 1,
+    "nota": 10,
+    "peso": 1
+  },
+  {
+    "avaliacao_ID": 4,
+    "turma_ID": 1,
+    "aluno_ID": 2,
+    "nota": 4,
+    "peso": 2
+  },
+  {
+    "avaliacao_ID": 5,
+    "turma_ID": 3,
+    "aluno_ID": 1,
+    "nota": 5,
+    "peso": 2
+  },
+  {
+    "avaliacao_ID": 6,
+    "turma_ID": 3,
+    "aluno_ID": 1,
+    "nota": 6,
+    "peso": 1
+  }
+]

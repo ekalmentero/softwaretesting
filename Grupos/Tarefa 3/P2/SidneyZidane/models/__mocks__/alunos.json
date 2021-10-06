@@ -1,0 +1,52 @@
+[
+  {
+    "aluno_ID": 1,
+    "matricula": 715752,
+    "nome": "Lana"
+  },
+  {
+    "aluno_ID": 2,
+    "matricula": 684958,
+    "nome": "Lanita"
+  },
+  {
+    "aluno_ID": 3,
+    "matricula": 695665,
+    "nome": "Barbabra"
+  },
+  {
+    "aluno_ID": 4,
+    "matricula": 701677,
+    "nome": "Abba"
+  },
+  {
+    "aluno_ID": 5,
+    "matricula": 665444,
+    "nome": "Lurleen"
+  },
+  {
+    "aluno_ID": 6,
+    "matricula": 654384,
+    "nome": "Melli"
+  },
+  {
+    "aluno_ID": 7,
+    "matricula": 721653,
+    "nome": "Margot"
+  },
+  {
+    "aluno_ID": 8,
+    "matricula": 733699,
+    "nome": "Arlee"
+  },
+  {
+    "aluno_ID": 9,
+    "matricula": 727993,
+    "nome": "Findley"
+  },
+  {
+    "aluno_ID": 10,
+    "matricula": 702409,
+    "nome": "Tory"
+  }
+]

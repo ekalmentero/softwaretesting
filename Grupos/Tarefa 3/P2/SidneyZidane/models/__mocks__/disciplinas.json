@@ -1,0 +1,17 @@
+[
+  {
+    "disciplina_ID": 1,
+    "codigo": 172839,
+    "nome": "teste update"
+  },
+  {
+    "disciplina_ID": 3,
+    "codigo": 12345,
+    "nome": "Teste"
+  },
+  {
+    "disciplina_ID":4,
+    "codigo":34567,
+    "nome":"Calculo"
+  }
+]
