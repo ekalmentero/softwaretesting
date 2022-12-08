@@ -1,6 +1,6 @@
 //Teste utilizando mock de módulo jest
 
-jest.mock('./mat');
+jest.mock('../mat');
 
 const media = require('./media');
 

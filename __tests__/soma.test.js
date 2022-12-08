@@ -1,4 +1,4 @@
-const mat = require('./mat');
+const mat = require('../mat');
 
 let casosDeTeste = [
     {

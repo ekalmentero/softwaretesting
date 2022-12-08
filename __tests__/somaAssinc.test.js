@@ -1,4 +1,4 @@
-const exemploAssincrono = require('./exemploAssincrono');
+const exemploAssincrono = require('../exemploAssincrono');
 /*
 test('Soma 7+4', () => {
     exemploAssincrono.somaAssinc([7,4]).toBe(11);

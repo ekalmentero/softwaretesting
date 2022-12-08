@@ -1,4 +1,4 @@
-const arquivos = require('./modulo_arquivo');
+const arquivos = require('../modulo_arquivo');
 jest.mock('fs');
 
 

@@ -1,5 +1,5 @@
-const media = require('./media');
-const mat = require('./mat');
+const media = require('../media');
+const mat = require('../mat');
 
 //jest.mock('./mat');
 
