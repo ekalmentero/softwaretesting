@@ -39,9 +39,22 @@ async function getDataSinc(){
     return minhaPromise;
 }
 
+function somaAssinc (valor1, valor2){
+    return new Promise((resolve, reject) => {
+        if((typeof valor1) != 'number' || (typeof valor2) != 'number'){
+            reject("erro");
+        }else{
+            let total = valor1+valor2;
+            resolve(total);
+        }
+    });
+
+}
+
 module.exports = {
     getDataAtual,
     getDataSinc,
     lerArquivoJSONAssinc,
-    lerArquivoJSONSinc
+    lerArquivoJSONSinc,
+    somaAssinc
   }
