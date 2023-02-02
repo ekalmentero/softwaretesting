@@ -1,7 +1,7 @@
 const { request } = require('express');
 const express = require('express')
  
-const aluno = require ('./rotas/aluno_rotas');
+const aluno = require ('./rotas/aluno');
 
 const app = express()
 const port = 3000
