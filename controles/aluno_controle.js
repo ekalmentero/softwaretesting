@@ -1,110 +1,54 @@
-const modeloAluno = require('../modelos/aluno_modelo');
+const Aluno = require('../models/aluno');
 
-
-function isEmptyObject(obj) {
-    return !Object.keys(obj).length;
+// Criação (Create)
+exports.create = async (req, res) => {
+try {
+    const { matricula, nome, data_nascimento, email } = req.body;
+    const aluno = await Aluno.create({ matricula, nome, data_nascimento, email });
+    res.send(aluno);
+    } catch (error) {
+    res.status(500).send(error);
 }
+};
 
-function lerAluno(matricula){
-    return "bateu controle";
+// Leitura (Read)
+exports.read = async (req, res) => {
+try {
+    const aluno = await Aluno.findByPk(req.params.id);
+    if (!aluno) {
+    return res.status(404).send('Aluno não encontrado');
+    }
+    res.send(aluno);
+    } catch (error) {
+    res.status(500).send(error);
+    }
+};
 
-    let mensagem = modeloAluno.
-    /*
-    const promise = new Promise( (resolve, reject) => { 
-        
-        modeloAluno.lerAlunoBD(matricula).then( aluno => {
-            
-            if (typeof aluno  !== 'undefined' && !isEmptyObject(aluno)) { 
-                resolve(aluno);
-            } 
-            else { 
-                reject("Nenhum aluno com esta matrícula encontrado");
-            } 
-         
-        });
-        
-         
-    });
-    
-    return promise;
-    */
+// Atualização (Update)
+exports.update = async (req, res) => {
+try {
+    const aluno = await Aluno.findByPk(req.params.id);
+    if (!aluno) {
+    return res.status(404).send('Aluno não encontrado');
+    }
+    const { matricula, nome, data_nascimento, email } = req.body;
+    await aluno.update({ matricula, nome, data_nascimento, email });
+    res.send(aluno);
+    } catch (error) {
+    res.status(500).send(error);
 }
+};
 
-function lerCR (matricula){
-    // todo
-
-    //recuperar notas do aluno
-
-    //lógica de cálculo do CR
+// Exclusão (Delete)
+exports.delete = async (req, res) => {
+try {
+    const aluno = await Aluno.findByPk(req.params.id);
+    if (!aluno) {
+    return res.status(404).send('Aluno não encontrado');
+    }
+    await aluno.destroy();
+    res.send('Aluno excluído com sucesso');
+    } catch (error) {
+    res.status(500).send(error);
 }
-
-function lerTodosAlunos(){
-    
-    const promise = new Promise( (resolve, reject) => { 
-        
-        modeloAluno.lerTodosAlunosBD().then( alunos => {
-            
-           if (typeof alunos  !== 'undefined' && alunos) { 
-                resolve(alunos);
-            } 
-            else { 
-                reject(new Error("Nenhum aluno encontrado"));
-            } 
-            
-        });
-    });
-    return promise;
-}
-
-function criarAluno(dadosAluno){
-    const promise = new Promise((resolve, reject) => { 
-        modeloAluno.criarAlunoBd(dadosAluno).then( resultado => {
-        if (resultado.affectedRows == 1){
-            resolve(resultado);        
-        }else{          
-            reject(new Error("Falha ao inserir aluno"));
-        }
-        });
-    });
-    return promise;
-
-}
-
-
-function deletarAluno(matricula){
-    const promise = new Promise((resolve, reject) => { 
-        modeloAluno.deletarAlunoBD(matricula).then(resultado => {
-        if (resultado.affectedRows >= 1){
-            resolve(resultado);        
-        }else{
-            reject(new Error("Falha ao remover aluno/aluno não encontrado"));
-        }
-        });
-    });
-    return promise;
-}
-
-function atualizarAluno(aluno){
-    const promise = new Promise((resolve, reject) => { 
-        modelAluno.updateAlunoBD(aluno).then(resultado => {
-        if (resultado.affectedRows == 1){
-            resolve(resultado);        
-        }else{
-            reject(new Error("Falha ao atualizar aluno/aluno não encontrado"));
-        }
-        })
-        .catch(resultado => console.log("Erro atualizar modelo aluno"+resultado));
-    });
-    return promise;
-}
-
-
-module.exports = {
-    lerAluno,
-    lerTodosAlunos,
-    criarAluno,
-    deletarAluno,
-    atualizarAluno
-   
-    
-}
+};
