@@ -1,5 +1,8 @@
 const { Sequelize, Model } = require('sequelize');
-const sequelize = require('../database/database');
+const sequelize = new Sequelize('ufrrj', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql'
+  });
 
 class Aluno extends Model {}
 Aluno.init({
