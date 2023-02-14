@@ -1,6 +1,6 @@
 // aluno.js componente da camada de modelo da nossa arquitetura MVC
 
-const conexao = require('../DB/conexao')
+const conexao = require('../BD/conexao')
 
 const fs = require('fs')
 const path = require("path");
@@ -19,7 +19,7 @@ function lerTodosAlunosBD() {
 }
 
 //Recuperar dados de aluno
-function lerAlunoBD(matricula) {
+function consultarAlunoBD(matricula) {
     return new Promise(function(resolve, reject) {
         conexao.query('SELECT * FROM aluno WHERE matricula ='+matricula, function (err, result) {
             if (err) throw reject(err);
@@ -28,10 +28,25 @@ function lerAlunoBD(matricula) {
     });
 }
 
-function criarAlunoBD(aluno) {
+function iserirAlunoBD(aluno) {
+    
+    conexao.connect(function(err) {
+        if (err) {
+          console.error('error connecting: ' + err.stack);
+          return;
+        }
+        console.log('connected as id ' + conexao.threadId);
+    });
+      
+    console.log("recebida requisição inserir aluno no modelo");
+
+    const minhaQuery = 'INSERT INTO aluno (matricula, nome, data_nascimento, email) VALUES ("'+aluno.matricula+'","'+aluno.nome+'","'+aluno.data_nascimento+'","'+aluno.email+'")';
+    
+    console.log("query executada:"+minhaQuery);
+
     return new Promise(function(resolve, reject) {
-        conexao.query('INSERT INTO aluno (matricula, nome) VALUES ("'+aluno.matricula+'","'+aluno.nome+'")', function (err, result) {
-            if (err) throw reject(err);
+        conexao.query(minhaQuery, function (err, result) {
+            if (err) throw reject(err.message);
             resolve(result);
         });
     });
@@ -58,8 +73,8 @@ function atualizarAlunoBD(aluno){
 
 module.exports = {
     lerTodosAlunosBD,
-    lerAlunoBD,
-    criarAlunoBD,
+    consultarAlunoBD,
+    iserirAlunoBD,
     deletarAlunoBD,
     atualizarAlunoBD
 }

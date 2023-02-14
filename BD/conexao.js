@@ -4,7 +4,7 @@ const conexao = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'ufrrj'
+  database : 'topicos2022_2'
 });
 
 module.exports = conexao;

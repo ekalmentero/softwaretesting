@@ -6,15 +6,14 @@ const aluno = express.Router({mergeParams: true})
 aluno.use(express.json());
 aluno.use(express.urlencoded({ extended: true }));
 
-//const controllerAluno = require('../controles/aluno_controle');
+const controleAluno = require('../controles/aluno_controle');
 
 aluno.get('/aluno/:id', function (req, res) {
     
-    let matricula = req.params.id;
-    console.log("recebida requisição get para aluno com matrícula: "+matricula);
-    res.send("recebida requisição get para aluno com matrícula: "+matricula);
-  
-/*    controllerAluno.getAluno(matricula)
+  let matricula = req.params.id;
+  console.log("recebida requisição get para aluno com matrícula: "+matricula);
+    
+  controleAluno.consultarAluno(matricula)
       .then(resultado => {
             res.send(resultado)
         })
@@ -22,7 +21,7 @@ aluno.get('/aluno/:id', function (req, res) {
         console.log("Promise rejeitada: " + erro);
         res.send(erro);
       })
-*/      
+    
   });
   
   aluno
@@ -41,9 +40,9 @@ aluno.get('/aluno/:id', function (req, res) {
     })
     
     .post('/aluno', function (req, res) {
-      console.log("recebida requisição create aluno");
-      /*
-      controllerAluno.createAluno(req.body)
+      console.log("recebida requisição inserir aluno na rota");
+      
+      controleAluno.inserirAluno(req.body)
       .then(resultado => {
         res.send("Aluno inserido com sucesso")
       })
@@ -51,11 +50,13 @@ aluno.get('/aluno/:id', function (req, res) {
         console.log(erro);
         res.send(erro);
       })
-      */
-    });
-    /*
-    .delete('/aluno', function (req, res) {
+            
+    })
+    
+    .delete('/aluno/:id', function (req, res) {
       console.log("recebida requisição delete aluno :ID="+req.body.id);
+
+      /*
       controllerAluno.deleteAluno(req.body.id)
       .then(resultado => {
         res.send("Aluno removido com sucesso")
@@ -64,9 +65,10 @@ aluno.get('/aluno/:id', function (req, res) {
         console.log(erro);
         res.send(erro);
       })
+      */
     })  
   
-    .patch('/aluno', function (req, res) {
+    .put('/aluno', function (req, res) {
       console.log("recebida requisição alterar aluno");
       controllerAluno.updateAluno(req.body)
       .then(resultado => {
@@ -78,6 +80,6 @@ aluno.get('/aluno/:id', function (req, res) {
       })
       
     });  
-    */
+    
 
 module.exports = aluno

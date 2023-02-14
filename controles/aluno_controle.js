@@ -5,14 +5,11 @@ function isEmptyObject(obj) {
     return !Object.keys(obj).length;
 }
 
-function lerAluno(matricula){
-    return "bateu controle";
-
-    let mensagem = modeloAluno.
-    /*
+function consultarAluno(matricula){
+    
     const promise = new Promise( (resolve, reject) => { 
         
-        modeloAluno.lerAlunoBD(matricula).then( aluno => {
+        modeloAluno.consultarAlunoBD(matricula).then( aluno => {
             
             if (typeof aluno  !== 'undefined' && !isEmptyObject(aluno)) { 
                 resolve(aluno);
@@ -27,7 +24,7 @@ function lerAluno(matricula){
     });
     
     return promise;
-    */
+    
 }
 
 function lerCR (matricula){
@@ -56,9 +53,12 @@ function lerTodosAlunos(){
     return promise;
 }
 
-function criarAluno(dadosAluno){
+function inserirAluno(dadosAluno){
+    
+    console.log("recebida requisição inserir aluno no controle");
+
     const promise = new Promise((resolve, reject) => { 
-        modeloAluno.criarAlunoBd(dadosAluno).then( resultado => {
+        modeloAluno.iserirAlunoBD(dadosAluno).then( resultado => {
         if (resultado.affectedRows == 1){
             resolve(resultado);        
         }else{          
@@ -66,6 +66,7 @@ function criarAluno(dadosAluno){
         }
         });
     });
+
     return promise;
 
 }
@@ -100,9 +101,9 @@ function atualizarAluno(aluno){
 
 
 module.exports = {
-    lerAluno,
+    consultarAluno,
     lerTodosAlunos,
-    criarAluno,
+    inserirAluno,
     deletarAluno,
     atualizarAluno
    
